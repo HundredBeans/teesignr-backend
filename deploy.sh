@@ -2,13 +2,13 @@
 
 eval "$(ssh-agent -s)" &&
 ssh-add -k ~/.ssh/id_rsa &&
-cd /var/www/backend #helloworld
+cd ~/test-travis/backend
 git pull
 
 source ~/.profile
 echo "$DOCKERHUB_PASS" | docker login --username $DOCKERHUB_USER --password-stdin
-docker stop backend
-docker rm backend
-docker rmi ajisepulsa/alta:latest
-docker run -d --name backend -p 5000:5000 ajisepulsa/alta:latest
+docker stop tugasDeploy
+docker rm tugasDeploy
+docker rmi daffa99/containerd:BE2
+docker run -d --name teesignrBE -p 5000:5000 daffa99/containerd:BE2
 
